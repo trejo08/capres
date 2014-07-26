@@ -12,5 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
+//= require ie-emulation-modes-warning
+//= require ie10-viewport-bug-workaround
 //= require turbolinks
-//= require_tree .
+
+// require maps
+// require_tree .
+var map = "esta es la variable maps";
+$(document).ready(function(){
+	google.maps.event.addDomListener(window, 'load', initialize);
+	function initialize() {
+		console.log("llamando a initialize");
+		console.log(map);
+		map = null;
+		var mapOptions = {
+			zoom: 8,
+			center: new google.maps.LatLng(-34.397, 150.644)
+		};
+		map = new google.maps.Map(document.getElementById('map-canvas'),
+			mapOptions);
+		console.log(map);
+		
+	}
+});
+

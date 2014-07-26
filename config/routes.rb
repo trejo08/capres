@@ -1,4 +1,5 @@
 Capres::Application.routes.draw do
+  get "locations/index"
   get "main/index"
   resources :users
 
@@ -6,7 +7,7 @@ Capres::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
