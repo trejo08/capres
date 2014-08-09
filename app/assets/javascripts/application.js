@@ -16,24 +16,30 @@
 //= require ie-emulation-modes-warning
 //= require ie10-viewport-bug-workaround
 //= require turbolinks
-
-// require maps
+//= require jquery.turbolinks
 // require_tree .
-var map = "esta es la variable maps";
+
+var map;
+var capres = {lat: 13.68439, lng: -89.24047}
+
 $(document).ready(function(){
-	google.maps.event.addDomListener(window, 'load', initialize);
-	function initialize() {
-		console.log("llamando a initialize");
-		console.log(map);
-		map = null;
-		var mapOptions = {
-			zoom: 8,
-			center: new google.maps.LatLng(-34.397, 150.644)
-		};
-		map = new google.maps.Map(document.getElementById('map-canvas'),
-			mapOptions);
-		console.log(map);
-		
-	}
+	if ($("#controller_action_name").val() === "index") {
+		google.maps.event.addDomListener(window, 'load', initialize);
+	};
 });
 
+function initialize() {
+	var mapOptions = {
+		zoom: 16,
+		center: new google.maps.LatLng(capres.lat, capres.lng),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
+	var marker = new google.maps.Marker({
+		position: map.getCenter(),
+		map: map,
+		title: "CAPRES"
+	});
+
+}

@@ -1,0 +1,28 @@
+<%= form_for @complaint, url: save_complaint_path(@complaint), html: { id: "complaints-form", role: "form", :multipart => true } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Nombre" %>
+    <%= f.text_field :name, placeholder: "Nombre", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Direccion de correo" %>
+    <%= f.text_field :email, placeholder: "Direccion de correo", class: "form-control", type: :email %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, "Numero de telefono" %>
+    <%= f.text_field :phone, placeholder: "Numero de telefono", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bus_route, "Numero de ruta" %>
+    <%= f.select :bus_route, options_for_select(@routes.map{|route| route.name}), {class: "form-control"}, :include_blank => true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "descripcion de la denuncia" %>
+    <%= f.text_field :description, placeholder: "descripcion de la denuncia", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image, "Fotografia" %>
+    <%= f.file_field :image %>
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <%= f.submit "enviar denuncia", class: "btn btn-default" %>
+<% end %>

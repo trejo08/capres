@@ -1,0 +1,33 @@
+<h1>Listado de Denuncias</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>nombre</th>
+      <th>email</th>
+      <th>telefono</th>
+      <th>Ruta de Autobus</th>
+      <th>Fotografia</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_complaints.each do |admin_complaint| %>
+      <tr>
+        <td><%= admin_complaint.name %></td>
+        <td><%= admin_complaint.email %></td>
+        <td><%= admin_complaint.phone %></td>
+        <td><%= admin_complaint.bus_route %></td>
+        <td><%= image_tag admin_complaint.image.url(:thumb) %></td>
+        <td><%= link_to 'Show', admin_complaints_path, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_admin_complaint_path(admin_complaint), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', admin_complaint_path(admin_complaint), method: :delete, data: { confirm: 'Esta seguro que desea eliminar esta denuncia?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Complaint', new_admin_complaint_path, class: "btn btn-success" %>

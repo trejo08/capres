@@ -1,0 +1,17 @@
+<%= form_for(@admin_complaint) do |f| %>
+  <% if @admin_complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_complaint.errors.count, "error") %> prohibited this admin_complaint from being saved:</h2>
+
+      <ul>
+      <% @admin_complaint.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
